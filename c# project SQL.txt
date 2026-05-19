@@ -1,0 +1,103 @@
+string query = @"INSERT INTO dbo.profilef
+(
+    firstname,
+    lastname,
+    username,
+    phone,
+    dob,
+    gender,
+    country,
+    address,
+    language,
+    title,
+    skills,
+    experience,
+    rate,
+    portfolio,
+    github,
+    linkedin,
+    university,
+    degree,
+    department,
+    graduationyear,
+    image
+)
+VALUES
+(
+    @firstname,
+    @lastname,
+    @username,
+    @phone,
+    @dob,
+    @gender,
+    @country,
+    @address,
+    @language,
+    @title,
+    @skills,
+    @experience,
+    @rate,
+    @portfolio,
+    @github,
+    @linkedin,
+    @university,
+    @degree,
+    @department,
+    @graduationyear,
+    @image
+)";
+
+using (SqlCommand command = new SqlCommand(query, connection))
+{
+    command.Parameters.AddWithValue("@firstname", firstname.Text);
+    command.Parameters.AddWithValue("@lastname", lastname.Text);
+    command.Parameters.AddWithValue("@username", textBox21.Text);
+    command.Parameters.AddWithValue("@phone", phone.Text);
+    command.Parameters.AddWithValue("@dob", dob.Text);
+    command.Parameters.AddWithValue("@gender", gender.Text);
+    command.Parameters.AddWithValue("@country", country.Text);
+    command.Parameters.AddWithValue("@address", address.Text);
+    command.Parameters.AddWithValue("@language", language.Text);
+    command.Parameters.AddWithValue("@title", title.Text);
+    command.Parameters.AddWithValue("@skills", GetCheckedItems());
+    command.Parameters.AddWithValue("@experience", experience.Text);
+    command.Parameters.AddWithValue("@rate", Convert.ToDecimal(rate.Value));
+    command.Parameters.AddWithValue("@portfolio", portfolio.Text);
+    command.Parameters.AddWithValue("@github", github.Text);
+    command.Parameters.AddWithValue("@linkedin", linkedin.Text);
+    command.Parameters.AddWithValue("@university", university.Text);
+    command.Parameters.AddWithValue("@degree", degree.Text);
+    command.Parameters.AddWithValue("@department", department.Text);
+    command.Parameters.AddWithValue("@graduationyear", Convert.ToInt32(graduationyear.Text));
+    command.Parameters.AddWithValue("@image", picturePath);
+
+    command.ExecuteNonQuery();
+	
+	
+	
+	update 
+	
+	string query = @"UPDATE dbo.profilef SET
+
+                    firstname = @firstname,
+                    lastname = @lastname,
+                    phone = @phone,
+                    dob = @dob,
+                    gender = @gender,
+                    country = @country,
+                    address = @address,
+                    language = @language,
+                    title = @title,
+                    skills = @skills,
+                    experience = @experience,
+                    rate = @rate,
+                    portfolio = @portfolio,
+                    github = @github,
+                    linkedin = @linkedin,
+                    university = @university,
+                    degree = @degree,
+                    department = @department,
+                    graduationyear = @graduationyear,
+                    image = @image
+
+                    WHERE username = @username";
